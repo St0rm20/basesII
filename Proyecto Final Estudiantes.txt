@@ -1,0 +1,341 @@
+﻿Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación Curso: Bases de Datos II  
+UNIVERSIDAD DEL QUINDÍO 
+Facultad de Ingeniería — Ingeniería de Sistemas y Computación Bases de Datos II 
+PROYECTO FINAL 
+QUINDIOFLIX 
+Plataforma de Streaming de Contenido Multimedia Semestre 2026-1
+Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+1. Descripción del proyecto 
+QuindioFlix es una plataforma de streaming de contenido multimedia que opera en Colombia.  La empresa necesita un sistema de base de datos robusto que soporte toda su operación. A  continuación se describe cómo funciona el negocio. Es responsabilidad del grupo analizar  este contexto, identificar las entidades, relaciones y reglas de negocio que se derivan de él. 
+1.1 El contenido 
+La plataforma ofrece películas, series, documentales, música y podcasts. Cada contenido  tiene un título, un año de lanzamiento, una duración, una sinopsis, una clasificación de edad  (TP, +7, +13, +16, +18) y una fecha en la que fue agregado al catálogo. 
+Un contenido puede pertenecer a varios géneros simultáneamente (por ejemplo, una película  puede ser de Acción y Ciencia Ficción al mismo tiempo). Los géneros disponibles son: Acción,  Comedia, Drama, Suspenso, Romance, Ciencia Ficción, Terror, Documental, Infantil, Musical,  entre otros que el grupo considere. 
+Las series y los podcasts se organizan en temporadas, y cada temporada tiene episodios.  Una película no tiene temporadas ni episodios. Algunos contenidos son producciones  originales de QuindioFlix y eso debe quedar registrado. 
+QuindioFlix permite asociar contenido relacionado entre si. Por ejemplo, una película puede  tener una secuela, un documental puede tener una versión extendida, o una serie puede tener  un spin-off. Esta relación es entre contenidos del mismo tipo o de tipos diferentes, y puede  tener una descripción (secuela, precuela, remake, spin-off, versión extendida, etc.). 
+1.2 Los usuarios y sus cuentas 
+Los usuarios se registran con sus datos personales (nombre, email, teléfono, fecha de  nacimiento, ciudad de residencia). Al registrarse eligen un plan de suscripción. Existen tres  planes: Básico (1 pantalla simultánea, calidad SD, $14.900/mes), Estándar (2 pantallas,  calidad HD, $24.900/mes) y Premium (4 pantallas, calidad 4K, $34.900/mes). 
+Cada cuenta puede tener varios perfiles (el número máximo depende del plan). Cada perfil  tiene un nombre, un avatar y un tipo que puede ser adulto o infantil. Los perfiles infantiles solo  pueden acceder a contenido clasificado como TP, +7 o +13.
+Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+Un usuario puede referir a otros usuarios a la plataforma. Cuando un usuario referido se  registra, tanto el que refirió como el nuevo usuario reciben un beneficio (por ejemplo, un  descuento en el próximo mes). El sistema debe registrar quien refirió a quien. 
+1.3 Reproducciones y consumo 
+Cada vez que un perfil reproduce contenido, se registra la reproducción con la fecha y hora  de inicio, la fecha y hora de fin (si terminó), el dispositivo utilizado (celular, tablet, TV,  computador) y el porcentaje de avance. Si el contenido es un episodio de una serie, debe  quedar claro cuál episodio se reprodujo. 
+Los perfiles pueden agregar contenido a su lista personal de favoritos y pueden calificar  contenido con estrellas (1 a 5) y opcionalmente dejar una reseña escrita. La plataforma  permite que los usuarios reporten contenido como inapropiado, y otro usuario (un moderador)  revisa y resuelve el reporte. Los moderadores son usuarios con un rol especial dentro del  sistema. 
+1.4 El equipo de trabajo 
+QuindioFlix tiene empleados organizados en departamentos (Tecnología, Contenido,  Marketing, Soporte, Finanzas). Cada departamento tiene un jefe, que es un empleado del  mismo departamento. Algunos empleados son supervisores de otros empleados dentro del  mismo departamento, formando una jerarquía interna. Un empleado puede supervisar a  varios empleados, pero cada empleado tiene un solo supervisor directo. 
+Los empleados del departamento de Contenido son los encargados de agregar y administrar  el catálogo. Cada contenido tiene un empleado responsable de su publicación en la  plataforma. Los empleados de Soporte atienden los reportes de contenido inapropiado. 
+1.5 Pagos y facturación 
+Los usuarios pagan mensualmente su suscripción. Cada pago queda registrado con la fecha,  el monto, el método de pago (tarjeta de crédito, tarjeta débito, PSE, Nequi, Daviplata) y el  estado del pago (exitoso, fallido, pendiente, reembolsado). Si un usuario no paga en los 30  días siguientes a su fecha de vencimiento, su cuenta se desactiva automáticamente. Si un  usuario tiene un referido activo, recibe un descuento en su próximo pago.
+Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+1.6 Reportes y analítica 
+La gerencia de QuindioFlix necesita reportes de consumo por ciudad, por categoría de  contenido, por género, por dispositivo, por plan de suscripción y por períodos de tiempo.  También necesita reportes financieros de ingresos por ciudad y por plan, y reportes de  rendimiento del equipo de trabajo (cuánto contenido ha publicado cada empleado, cuántos  reportes ha resuelto cada moderador, etc.). 
+2. Modelo de negocio y modelo conceptual 
+Los estudiantes deben construir desde cero el modelo de negocio y el modelo conceptual de  la base de datos. El contexto empresarial de la sección anterior es la única fuente de  información. Es tarea del grupo hacer la abstracción completa. 
+2.1 Modelo de negocio 
+El grupo debe documentar: 
+a) Identificacion de los actores del sistema y sus roles. 
+b) Procesos de negocio principales con su descripción detallada. 
+c) Mínimo 10 reglas de negocio derivadas del contexto empresarial. El grupo debe ir más allá  de lo obvio e identificar reglas implícitas que no están escritas explícitamente en la descripción  pero que se deducen del funcionamiento del negocio. 
+d) Restricciones del dominio para los atributos clave. 
+2.2 Modelo conceptual (Modelo Entidad-Relación) 
+El grupo debe diseñar el MER completo. Se espera que el modelo refleje fielmente la  complejidad del negocio descrito. El grupo debe prestar especial atención a: 
+a) Entidades, atributos, tipos de datos y restricciones. 
+b) Relaciones entre entidades con cardinalidad y participación. 
+c) Relaciones de distintos tipos: binarias, unarias (reflexivas) y N:M con sus tablas  intermedias. 
+d) Normalización hasta al menos 3FN.
+Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+e) El diagrama debe ser profesional, legible y con nombres claros (puede usar Oracle Data  Modeler, draw.io, Lucidchart, ERDPlus u otra herramienta). 
+Pista: Lean el contexto empresarial con mucho cuidado. Hay información que implica  relaciones no triviales (por ejemplo, relaciones de una entidad consigo misma). Si el modelo  no refleja esa complejidad, el grupo esta perdiendo puntos. 
+2.3 Modelo físico 
+Una vez definido el modelo conceptual, implementarlo en Oracle con un script SQL que  incluya CREATE TABLE con todas las restricciones, comentarios explicando cada tabla y  columna, y un script de inserción de datos de prueba (ver sección 4). 
+Importante: El modelo de datos es responsabilidad total del grupo. Un modelo pobre impacta  directamente la calidad de todos los demas entregables.
+Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+3. Requerimientos del proyecto 
+El proyecto debe cubrir los 5 núcleos temáticos del curso. A continuación se detallan los  requerimientos para cada uno. 
+3.1 Núcleo 1: Consultas avanzadas y almacenamiento 
+Resultado de aprendizaje: R.A.1 — Administrar componentes fundamentales de una  solución de BD 
+3.1.1 Consultas parametrizadas (mínimo 3) 
+Crear consultas que reciban parámetros usando variables de sustitución (&, &&, DEFINE).  Ejemplos: 
+a) Consulta que reciba una ciudad y muestre el top 10 de contenido mas reproducido en esa  ciudad. 
+b) Consulta que reciba un mes y año y muestre los ingresos por plan de suscripción en ese  período. 
+c) Consulta que reciba un género y muestre la calificación promedio por categoría para ese  género. 
+3.1.2 Tablas de referencias cruzadas — PIVOT y UNPIVOT (mínimo 2 de cada  una) 
+a) PIVOT: Generar un reporte donde las filas sean las ciudades y las columnas sean los  planes de suscripción, mostrando la cantidad de usuarios activos por cada combinación. 
+b) PIVOT: Reporte de reproducciones donde las filas sean las categorías y las columnas sean  los dispositivos (celular, tablet, TV, computador), mostrando el total de reproducciones. 
+c) UNPIVOT: Tomar un reporte pivoteado y convertirlo de nuevo en filas para análisis  detallado. 
+d) UNPIVOT: Convertir una tabla de resumen que tenga columnas de meses (enero, febrero,  marzo...) en filas individuales. 
+3.1.3 Funciones avanzadas del GROUP BY (mínimo 4) 
+a) ROLLUP: Reporte de ingresos por ciudad y plan de suscripción con subtotales por ciudad  y gran total.
+Facultad de Ingeniería     
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+b) CUBE: Reporte de reproducciones por categoría y dispositivo con todas las combinaciones  posibles. 
+c) GROUPING(): Reemplazar los NULLs generados por ROLLUP/CUBE con etiquetas  legibles. 
+d) GROUPING SETS: Reporte que muestre solo los totales por categoría y por ciudad, sin el  detalle cruzado. 
+3.1.4 Vistas materializadas (mínimo 2) 
+a) Vista materializada que precalcule el total de reproducciones y la calificación promedio por  contenido. Esta vista se usa como base para el reporte de "Contenido Mas Popular". 
+b) Vista materializada que precalcule los ingresos mensuales por ciudad y plan de  suscripción. Esta vista se usa como base para el reporte financiero mensual. 
+3.1.5 Fragmentación de tablas — tablespaces y datafiles (mínimo 1) 
+Fragmentar la tabla REPRODUCCIONES por rango de fechas (por ejemplo: reproducciones  de 2024, reproducciones de 2025), usando tablespaces y datafiles diferentes. Justificar la  decision de fragmentación. 
+3.2 Núcleo 2: PL/SQL — Procedimientos almacenados y  disparadores 
+Resultado de aprendizaje: R.A.2 — Implementar subprogramas en PL/SQL 
+3.2.1 Cursores (mínimo 2) 
+a) Cursor que recorra todos los usuarios cuya suscripción está vencida (más de 30 días sin  pago) y genere un reporte con nombre, email, plan, días de mora y monto adeudado. 
+b) Cursor que recorra el catálogo y para cada contenido calcule cuántas reproducciones  completas (porcentaje >= 90%) ha tenido y actualice un campo de popularidad. 
+3.2.2 Procedimientos almacenados (mínimo 3) 
+a) SP_REGISTRAR_USUARIO: Recibe los datos del usuario y el plan elegido, valida que el  email no exista, crea la cuenta, crea un perfil predeterminado y registra el primer pago.
+Facultad de Ingeniería   
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+b) SP_CAMBIAR_PLAN: Recibe el id del usuario y el nuevo plan, valida que sea un cambio  válido (no puede bajar de plan si tiene más perfiles de los permitidos), actualiza el plan y  registra el cambio. 
+c) SP_REPORTE_CONSUMO: Recibe un id de usuario y un rango de fechas, y genera un  reporte detallado con las reproducciones de cada perfil, agrupadas por categoría, con totales  de tiempo consumido. 
+3.2.3 Funciones (mínimo 2) 
+a) FN_CALCULAR_MONTO: Recibe un id de usuario y retorna el monto a cobrar en el  próximo mes, considerando el plan actual y posibles descuentos por antigüedad (más de 12  meses: 10% descuento, más de 24 meses: 15%). 
+b) FN_CONTENIDO_RECOMENDADO: Recibe un id de perfil y retorna el título del contenido  más afín al perfil basándose en los géneros que más ha reproducido. 
+3.2.4 Excepciones (mínimo 2) 
+a) En SP_REGISTRAR_USUARIO: Manejar la excepción cuando el email ya existe  (excepción personalizada) y cuando el plan no es válido (NO_DATA_FOUND). 
+b) En SP_CAMBIAR_PLAN: Manejar la excepción cuando el usuario tiene más perfiles de los  que permite el nuevo plan (excepción personalizada con código de error). 
+3.2.5 Disparadores (mínimo 4) 
+a) Trigger a nivel de fila en REPRODUCCIONES: Cada vez que se inserta una reproducción,  verificar que el usuario tenga una cuenta activa (estado_cuenta = 'ACTIVO'). Si no, rechazar  la inserción. 
+b) Trigger a nivel de fila en PERFILES: Al insertar un nuevo perfil, verificar que el usuario no  exceda el número máximo de perfiles según su plan (Básico: 2, Estándar: 3, Premium: 5). Si  lo excede, rechazar. 
+c) Trigger a nivel de fila en CALIFICACIONES: Verificar que el perfil haya reproducido al  menos el 50% del contenido antes de permitir una calificación. Si no, rechazar. 
+d) Trigger a nivel de sentencia en PAGOS: Despues de insertar un pago exitoso, actualizar  el estado_cuenta del usuario a 'ACTIVO' y la fecha_ultimo_pago. 
+3.3 Núcleo 3: Transacciones 
+Resultado de aprendizaje: R.A.1 — Administrar componentes fundamentales
+Facultad de Ingeniería 
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+3.3.1 Especificación de transacciones (mínimo 3) 
+Disenar y documentar al menos 3 transacciones criticas del sistema, especificando los  estados (activa, parcialmente confirmada, confirmada, fallida, abortada) y los puntos de  COMMIT y ROLLBACK: 
+a) Transaccion de registro completo: Crear usuario + perfil + primer pago. Si falla cualquier  paso, deshacer todo. 
+b) Transaccion de renovacion mensual: Para cada usuario activo, verificar fecha de  vencimiento, calcular monto, registrar pago y actualizar estado. Usar SAVEPOINT para que  si falla un usuario, no se pierdan los anteriores. 
+c) Transaccion de eliminacion de cuenta: Eliminar calificaciones, favoritos, reproducciones,  perfiles, pagos y finalmente el usuario. Debe ser todo o nada. 
+3.3.2 Concurrencia de datos (mínimo 1 escenario documentado) 
+Documentar y demostrar un escenario de concurrencia: Dos sesiones intentan cambiar el  plan del mismo usuario simultáneamente. Demostrar como Oracle maneja el bloqueo y como  se resuelve con SELECT FOR UPDATE. 
+3.4 Núcleo 4: Índices 
+Resultado de aprendizaje: R.A.3 — Analizar elementos que influyen en la calidad 
+3.4.1 Creación y administración de índices (mínimo 4) 
+a) Índice en REPRODUCCIONES(id_perfil, fecha_hora_inicio): Justificar por qué esta  combinación es útil para las consultas de historial de un perfil. 
+b) Índice en USUARIOS(email): Justificar por qué es necesario para el login y la validación  de duplicados. 
+c) Índice en CONTENIDO(id_categoria, anio_lanzamiento): Justificar su utilidad para las  busquedas por categoría y año. 
+d) Indice adicional a eleccion del estudiante, con justificación basada en las consultas mas  frecuentes del sistema. 
+3.4.2 Análisis de rendimiento (mínimo 1)
+Facultad de Ingeniería 
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+Ejecutar una consulta pesada ANTES y DESPUES de crear un indice. Mostrar el plan de  ejecución (EXPLAIN PLAN) en ambos casos y analizar la diferencia en costo y tiempo. Incluir  capturas de pantalla. 
+3.5 Núcleo 5: Administración de acceso a BD 
+Resultado de aprendizaje: R.A.1 — Administrar componentes fundamentales 
+3.5.1 Esquema de usuarios y roles (mínimo 3 roles) 
+Crear los siguientes usuarios y roles con privilegios diferenciados: 
+Rol 
+	Descripción 
+	Privilegios
+	ROL_ADMIN 
+	Administrador de la  plataforma
+	CRUD en todas las tablas, crear/eliminar usuarios,  ejecutar todos los procedimientos
+	ROL_ANALISTA 
+	Analista de datos / gerencia 
+	SELECT en todas las tablas, ejecutar  procedimientos de reportes, acceso a vistas  materializadas
+	ROL_SOPORTE 
+	Soporte al cliente 
+	SELECT en USUARIOS, PERFILES, PAGOS,  SUSCRIPCIONES. INSERT/UPDATE en  PAGOS. Ejecutar SP_CAMBIAR_PLAN
+	ROL_CONTENIDO 
+	Gestor de catálogo 
+	CRUD en CONTENIDO, TEMPORADAS,  EPISODIOS, GENEROS. SELECT en  REPRODUCCIONES y CALIFICACIONES
+	
+
+
+
+3.5.2 Implementación (mínimo 1 usuario por rol) 
+a) Crear al menos un usuario Oracle por cada rol definido. 
+b) Asignar los privilegios correspondientes mediante GRANT. 
+c) Demostrar que cada usuario solo puede hacer lo que su rol permite (intentar una operación  no permitida y mostrar el error). 
+d) Crear al menos un perfil (PROFILE) que limite los recursos: número máximo de sesiones  concurrentes, tiempo de inactividad, intentos de login fallidos.
+Facultad de Ingeniería 
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+4. Datos de prueba 
+El sistema debe tener datos suficientes para que los reportes sean significativos: 
+Tabla 
+	Mínimo de registros 
+	Notas
+	PLANES 
+	3 
+	Básico, Estándar, Premium
+	USUARIOS 
+	30 
+	Distribuidos en las 3 ciudades principales y los 3  planes
+	PERFILES 
+	50 
+	Algunos usuarios con multiples perfiles
+	CATEGORIAS 
+	5 
+	Peliculas, Series, Documentales, Música,  Podcasts
+	GENEROS 
+	8 
+	Acción, Comedia, Drama, Suspenso, Romance,  Ciencia Ficción, Terror, Infantil
+	CONTENIDO 
+	40 
+	Distribuido en categorías y géneros variados
+	TEMPORADAS 
+	15 
+	Para series y podcasts
+	EPISODIOS 
+	50 
+	Para las temporadas
+	REPRODUCCIONES 
+	200 
+	Variadas por perfil, contenido, dispositivo y fecha
+	CALIFICACIONES 
+	60 
+	Variadas en estrellas (1-5)
+	PAGOS 
+	80 
+	Historial de varios meses, algunos fallidos
+	FAVORITOS 
+	40 
+	Listas de favoritos variadas
+	
+
+
+
+Importante: Los datos deben ser ASIMÉTRICOS para que los reportes con ROLLUP, CUBE  y PIVOT muestren diferencias reales. No todos los usuarios deben estar en la misma ciudad  ni tener el mismo plan. 
+5. Entregables 
+El proyecto se entrega como un único paquete con los siguientes componentes:
+# 
+	Entregable 
+	Formato
+	1 
+	Documento de modelo de negocio: actores, procesos, reglas  de negocio (mínimo 10), restricciones del dominio
+	Documento Word o PDF
+	2 
+	Modelo Entidad-Relación (MER) completo y profesional 
+	Imagen PNG o PDF
+	
+
+
+
+Facultad de Ingeniería 
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+3 
+	Script de creación de tablas con restricciones y comentarios 
+	Archivo .sql
+	4 
+	Script de inserción de datos de prueba 
+	Archivo .sql
+	5 
+	Script de consultas avanzadas (Núcleo 1): parametrizadas,  PIVOT, UNPIVOT, ROLLUP, CUBE, GROUPING SETS,  vistas materializadas, fragmentación
+	Archivo .sql
+	6 
+	Script de PL/SQL (Núcleo 2): cursores, procedimientos,  funciones, excepciones, disparadores
+	Archivo .sql
+	7 
+	Script de transacciones (Núcleo 3): especificación y  demostración de las 3 transacciones + escenario de  concurrencia
+	Archivo .sql
+	8 
+	Script de índices (Núcleo 4): creación + análisis EXPLAIN  PLAN con capturas
+	Archivo .sql + capturas
+	9 
+	Script de usuarios y roles (Núcleo 5): creación de roles,  usuarios, GRANT, demostración
+	Archivo .sql
+	10 
+	Documento de sustentación: justificación de decisiones de  diseño, análisis de índices, escenario de concurrencia
+	Documento Word o PDF (máximo  10 páginas)
+	
+
+
+
+6. Criterios de evaluacion
+Núcleo temático 
+	Peso 
+	Criterios
+	NT1: Consultas  avanzadas
+	25% 
+	Consultas parametrizadas funcionan correctamente.  PIVOT/UNPIVOT generan reportes legibles.  ROLLUP/CUBE/GROUPING SETS correctos. Vistas materializadas  funcionan. Fragmentación justificada.
+	NT2: PL/SQL 
+	30% 
+	Cursores recorren datos correctamente. Procedimientos validan  reglas de negocio. Funciones retornan valores correctos.  Excepciones se manejan apropiadamente. Triggers cumplen las  reglas.
+	NT3: Transacciones 
+	15% 
+	Transacciones usan COMMIT/ROLLBACK/SAVEPOINT  correctamente. Escenario de concurrencia esta documentado y  demostrado.
+	NT4: Índices 
+	10% 
+	Índices creados con justificación. Análisis EXPLAIN PLAN muestra  mejora.
+	NT5: Usuarios y roles 
+	10% 
+	Roles diferenciados. Privilegios correctos. Demostración de  restricción de acceso.
+	Calidad general 
+	10% 
+	Modelo de datos bien diseñado. Datos de prueba asimétricos. Scripts  organizados y comentados. Documento de sustentación claro.
+	
+
+
+
+Facultad de Ingeniería 
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+7. Reglas generales 
+1. El proyecto se realiza en grupos de 2 a 3 estudiantes. 
+2. Todos los scripts deben ejecutarse sin errores en Oracle (SQL Developer o SQL*Plus). 3. Cada script debe estar comentado explicando qué hace cada sección. 
+4. Los datos de prueba deben ser coherentes (no inventar datos que rompan las restricciones  de integridad). 
+5. El proyecto se sustenta en clase. Todos los integrantes del grupo deben poder explicar  cualquier parte del proyecto. 
+6. Se evaluará tanto el funcionamiento como la comprensión. Un script que funciona pero que  el estudiante no sabe explicar, no obtiene la nota completa. 
+7. Se permite consultar documentación oficial de Oracle, libros y material del curso. No se  permite copiar de otros grupos. 
+8. La entrega es en la fecha establecida por el docente. Entregas tardias tienen penalización  según el reglamento de la universidad. 
+8. Cronograma sugerido 
+El proyecto se trabaja en paralelo con las clases. A medida que se avanza en cada núcleo  temático, los estudiantes aplican lo aprendido al proyecto:
+Semana 
+	Tema en clase 
+	Avance en el proyecto
+	1-3 
+	Repaso BD I + Consultas avanzadas 
+	Disenar MER, crear tablas, insertar datos,  consultas parametrizadas
+	4-5 
+	PIVOT, UNPIVOT, ROLLUP, CUBE 
+	Implementar reportes cruzados y con subtotales
+	6 
+	Vistas materializadas, fragmentación 
+	Crear vistas materializadas y fragmentar tabla  REPRODUCCIONES
+	7-9 
+	PL/SQL: cursores, procedimientos,  funciones
+	Implementar SP, funciones y cursores del  proyecto
+	10-11 
+	PL/SQL: triggers, excepciones 
+	Implementar triggers y manejo de excepciones
+	12-13 
+	Transacciones y concurrencia 
+	Disenar e implementar las 3 transacciones +  escenario concurrencia
+	
+
+
+
+Facultad de Ingeniería 
+Programa de Ingeniería de Sistemas y Computación 
+Curso: Bases de Datos II  
+14 
+	Índices 
+	Crear índices, hacer análisis EXPLAIN PLAN
+	15 
+	Usuarios y roles 
+	Implementar esquema de seguridad
+	16 
+	Entrega y sustentación 
+	Entrega final + sustentación oral
+	
+
+
+
+QuindioFlix — Proyecto Final — Bases de Datos II 
+Universidad del Quindío — Ingeniería de Sistemas y Computación
